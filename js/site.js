@@ -4,11 +4,11 @@ function getValues() {
   let inputString = document.getElementById('userString').value;
 
   // if special chars/spaces -- validate/remove special characters -- if() statement
-  let validatedString = removeChar(inputString);
+  let newString = removeChar(inputString);
 
-  let checkString = checkForPalindrome(validatedString);
+  let checkString = checkForPalindrome(newString);
 
-  displayResults(checkString, validatedString)
+  displayResults(checkString, newString)
 
  }
 
@@ -73,6 +73,7 @@ else {
 
 // validation function
 function removeChar(word) {
+  word = word.toLowerCase();
    // word with regex goes here
   let changedString = word.replace(/[^a-zA-Z0-9]/g, '');
 
