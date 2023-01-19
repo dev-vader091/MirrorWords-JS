@@ -8,7 +8,7 @@ function getValues() {
 
   let checkString = checkForPalindrome(validatedString);
 
-  displayResults(checkString)
+  displayResults(checkString, validatedString)
   
   // if no special chars/spaces -- run checkForPalindrome()
   // checkForPalindrome(inputString);
@@ -46,25 +46,31 @@ function checkForPalindrome(userInput) {
 }
 
 // view function
-function displayResults(resultWord) {
+function displayResults(resultWord, inputString) {
   // display the result 
   let alertHeading = document.getElementById('alertHeading');
   let alertBox = document.getElementById('alert');
-  let resultMessage = document.getElementById('results');
-  
-  let inputString = document.getElementById('userString').value;
-  inputString = removeChar(inputString);
+  let resultMessageHtml = document.getElementById('results');
+
+  let resultMessage = `Your phrase reversed is: ${resultWord}`;
+
+  let success = `Well done, you entered a Palindrome!`;
+
+  let fail = `Sorry, you didn't enter a Palindrome.`;
+
+  // let inputString = document.getElementById('userString').value;
+  // inputString = removeChar(inputString);
 
 if(resultWord == inputString) {
-  alertHeading.textContent = `Well done, you entered a Palindrome!`;
-  resultMessage.textContent = `Your phrase reversed is: ${resultWord}`;
+  alertHeading.textContent = success;
+  resultMessageHtml.textContent = resultMessage;
   alertBox.classList.remove('invisible');
   alertBox.classList.remove('alert-danger');
   alertBox.classList.add('alert-success');
 }
 else {
-  alertHeading.textContent = `Sorry, you didn't enter a Palindrome.`;
-  resultMessage.textContent = `Your phrase reversed is: ${resultWord}`;
+  alertHeading.textContent = fail;
+  resultMessageHtml.textContent = resultMessage;
   alertBox.classList.remove('invisible');
   alertBox.classList.remove('alert-seuccess');
   alertBox.classList.add('alert-danger');
