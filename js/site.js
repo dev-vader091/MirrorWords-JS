@@ -9,20 +9,13 @@ function getValues() {
   let checkString = checkForPalindrome(validatedString);
 
   displayResults(checkString, validatedString)
-  
-  // if no special chars/spaces -- run checkForPalindrome()
-  // checkForPalindrome(inputString);
 
  }
-
-
 
 // logic function
 function checkForPalindrome(userInput) {
   // reverse the string
-  let reversedString = "";
-
-  
+  let reversedString = "";  
   let notPalindrome;
   let palindrome ;
 
@@ -72,7 +65,7 @@ else {
   alertHeading.textContent = fail;
   resultMessageHtml.textContent = resultMessage;
   alertBox.classList.remove('invisible');
-  alertBox.classList.remove('alert-seuccess');
+  alertBox.classList.remove('alert-success');
   alertBox.classList.add('alert-danger');
 }
 
