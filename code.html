@@ -75,23 +75,122 @@
       <div class="col-12 col-lg-8">
         <pre class="line-numbers">
           <code class="language-js">
-            function displayMessage() {
-              let msg = document.getElementById('message').value;
+            function getValues() {
+              // get user input
+              let inputString = document.getElementById('userString').value;
             
-              Swal.fire(
-                {
-                  backdrop: false,
-                  title: 'MirrorWords',
-                  text: msg
+              // initialize a new varible and assign it the value returned from the validation function
+              // this checks if there are any special chars in the input and removes them
+              let newString = removeChar(inputString);
+            
+              // after validation -- initialize a variable and assign 
+              // it the value returned from the logic function using the returned value of the 
+              // validation function as the parameter in logic function(newSting above)
+              let checkString = checkForPalindrome(newString);
+            
+              // view function to display results using the two variables above as 
+              // parameters 
+              displayResults(checkString, newString)
+            
+             }
+          </code>
+        </pre>
+        <pre class="line-numbers">
+          <code class="language-js">
+            function checkForPalindrome(userInput) {
+              // initialize a variable to represent the string reversed  
+                let reversedString = "";  
+                // create a variable to represent a true/false value
+                let palindrome ;
+              
+                // loop through parameter value -- starting from last index
+                for(i = userInput.length - 1; i >= 0; i--) {
+                  // create a variable to repesent the current character i
+                  let currentLetter = userInput[i];
+                  
+                  // add the current i value to our initialized variable 
+                  reversedString += currentLetter;
                 }
-              );
+              
+                // compare to user input
+                // if the user input value matches the string from our loop
+                // the palindrome variable initialized previously is given a true value
+                if(reversedString == userInput) {
+                  palindrome = true;
+                }
+                // if the user input does not match the string from the loop
+                // the palindrome variable is given a value of false
+                else {
+                  palindrome = false;
+                }
+                // return our reversed string variable from the loop
+                return reversedString;
+                
+              }
+          </code>
+        </pre>
+        <pre class="line-numbers">
+          <code class="language-js">
+            function displayResults(resultWord, inputString) {
+              // display the result 
+              // get html elements
+              let alertHeading = document.getElementById('alertHeading');
+              let alertBox = document.getElementById('alert');
+              let resultMessageHtml = document.getElementById('results');
+            
+              // create a message displaying to user the new word/phrase 
+              let resultMessage = `Your phrase reversed is: ${resultWord}`;
+              // create success/fail messages 
+              let success = `Well done, you entered a Palindrome!`;
+              let fail = `Sorry, you didn't enter a Palindrome.`;
+            
+            
+              // let inputString = document.getElementById('userString').value;
+              // inputString = removeChar(inputString);
+            
+              // using if statement, determine if the parameter values match and
+              // display corresponding messages
+              if(resultWord == inputString) {
+                alertHeading.textContent = success;
+                resultMessageHtml.textContent = resultMessage;
+                alertBox.classList.remove('invisible');
+                alertBox.classList.remove('alert-danger');
+                alertBox.classList.add('alert-success');
+              }
+              else {
+                alertHeading.textContent = fail;
+                resultMessageHtml.textContent = resultMessage;
+                alertBox.classList.remove('invisible');
+                alertBox.classList.remove('alert-success');
+                alertBox.classList.add('alert-danger');
+              }
             }
+          </code>
+        </pre>
+        <pre class="line-numbers">
+          <code class="language-js">
+            function removeChar(word) {
+              // the user input value is used a the parameter (word)
+              // and is changed to lower case
+              word = word.toLowerCase();
+              // a regular expression is used to create a new string from the parameter value
+              //  this will remove any special characters and/or spaces from the parameter value
+              let changedString = word.replace(/[^a-zA-Z0-9]/g, '');
+          
+              // return the value of the new string
+              return changedString;
+          }
           </code>
         </pre>
       </div>
       <div class="col-12 col-lg-4">
-        <p>The code is structured in one function.</p>
-        <h5><code>displayMessage()</code></h5>
+        <h5 class="fs-2 fw-bold pb-3"><code>getValues()</code></h5>
+        <p>This function displays the message in a Sweet Alert.</p>
+        <h5 class="fs-2 fw-bold pb-3"><code>checkForPalindrome(userInput)</code></h5>
+        <p>This function displays the message in a Sweet Alert.</p>
+        <h5 class="fs-2 fw-bold pb-3"><code>displayResults(resultWord, inputString)</code></h5>
+        <p>This function displays the message in a Sweet Alert.</p>
+        <h5 class="fs-2 fw-bold pb-3"><code>removeChar(word)</code></h5>
         <p>This function displays the message in a Sweet Alert.</p>
       </div>
     </div>
