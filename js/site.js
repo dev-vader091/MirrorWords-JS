@@ -3,7 +3,7 @@ function getValues() {
   // get user input
   let inputString = document.getElementById('userString').value;
 
-  // initialize a new varible and assign it the value returned from the validation function
+  // initialize a new variable and assign it the value returned from the validation function
   // this checks if there are any special chars in the input and removes them
   let newString = removeChar(inputString);
 

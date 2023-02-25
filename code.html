@@ -48,7 +48,7 @@
               <a class="nav-link" href="/app.html">The App</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active"  aria-current="page" href="/code.html">The Code</a>
+              <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
             </li>
             <li class="nav-item">
               <!-- CHANGE THIS BEFORE PUBLISHING -->
@@ -186,21 +186,44 @@
       <div class="col-12 col-lg-4">
         <h5 class="fs-2 fw-bold pb-3"><code>getValues()</code></h5>
         <p>This is the controller function, which acts as an entry point for the code.
-          First, we get the user input value and assign it to a variable, inputString. Next,
-          a new variable is initialized and assigned the value returned from the validation function removeChar().
-          This checks if there are any special characters or spaces in the input and removes 
-          After validation, initialize a variable and assign it the value returned from the logic function checkForPalindrome()
+          First, we get the user input value and assign it to a variable, <strong>inputString</strong>. Next,
+          a new variable, <strong>newString</strong> is initialized and assigned the value returned from the validation
+          function removeChar().
+          This checks if there are any special characters or spaces in the input and removes them.
+          After validation, initialize a variable <strong>checkString</strong> and assign it the value returned from the
+          logic function
+          checkForPalindrome()
           using the returned value of the validation function as the parameter.
         </p>
         <h5 class="fs-2 fw-bold pb-3"><code>checkForPalindrome(userInput)</code></h5>
         <p>
-          This is the logic function. 
+          This is the logic function. Using the validated userInput string as the parameter, we initialize a variable,
+          <strong>reversedString</strong>, and
+          assign it an empty string as the initial value. Next, we create a variable <strong>palindrome</strong> to
+          represent a true/false value.
+          To reverse the string, we loop through parameter value -- starting from last index. In the loop, assign a
+          variable <strong>currentLetter</strong> to repesent the current character i of the string.
+          In each iteration of the loop, add the <strong>currentLetter</strong> value to our initialized variable
+          <strong>reversedString</strong>.
+          Once the loop has ended, the reversed string is compared to the user input. Using an if statement, if the user
+          input value matches the string from our loop
+          the <strong>palindrome</strong> variable initialized previously is given a true value. If the user input does
+          not match the string from the loop
+          the <strong>palindrome</strong> variable is given a value of false. To complete this function,
+          <strong>reversedString</strong> is returned to be used in the display function.
 
         </p>
         <h5 class="fs-2 fw-bold pb-3"><code>displayResults(resultWord, inputString)</code></h5>
         <p>This function displays the message in a Sweet Alert.</p>
         <h5 class="fs-2 fw-bold pb-3"><code>removeChar(word)</code></h5>
-        <p>This function displays the message in a Sweet Alert.</p>
+        <p>In this function the user input value is used as the parameter (word)
+          and is changed to lower case. After this, a regular expression is used to create a new string, named
+          <strong>changedString</strong>, from the parameter value.
+          The regex will remove any special characters and/or spaces from the parameter value. To round out the code for
+          this function,
+          we return the value of the new string <strong>changedString</strong>.
+
+        </p>
       </div>
     </div>
   </main>
